@@ -41,7 +41,8 @@ footer{padding:25px 0 34px}.footer-in{display:flex;justify-content:space-between
 .marquee{overflow:hidden}
 .marquee-in{display:flex;width:max-content;max-width:none;margin:0;justify-content:flex-start;flex-shrink:0;gap:48px;padding-left:48px;animation:marquee-scroll 28s linear infinite;will-change:transform}
 .marquee-in>span{display:block;flex:0 0 auto}
-.marquee:hover .marquee-in{animation-play-state:paused}
+/* Keep marquee moving while the pointer is over it. */
+.marquee:hover .marquee-in{animation-play-state:running}
 @keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.marquee-in{animation:none;transform:none}}
 
