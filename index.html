@@ -36,6 +36,15 @@ footer{padding:25px 0 34px}.footer-in{display:flex;justify-content:space-between
 @media(max-width:800px){.hero-character{height:480px;min-height:420px}.hero-grid{grid-template-columns:1fr;gap:36px}.hero-character{max-width:560px;width:100%;margin:auto}}
 @media(max-width:520px){.hero-character{min-height:400px;height:420px;padding:14px;border-radius:18px}.avatar-gif{width:64%;max-height:44%}.speech{top:15%;font-size:11px}.character-bottom{bottom:86px}.character-actions{bottom:16px}.character-btn{padding:10px;font-size:8px}}
 
+
+/* Seamless infinite marquee */
+.marquee{overflow:hidden}
+.marquee-in{display:flex;width:max-content;max-width:none;margin:0;justify-content:flex-start;flex-shrink:0;gap:48px;padding-left:48px;animation:marquee-scroll 28s linear infinite;will-change:transform}
+.marquee-in>span{display:block;flex:0 0 auto}
+.marquee:hover .marquee-in{animation-play-state:paused}
+@keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-in{animation:none;transform:none}}
+
 </style></head><body>
 <header><div class="wrap nav"><a class="logo" href="#home">LEVCHINSKY<b>®</b></a><nav class="navlinks"><a href="#home" data-i18n="navHome">Главная</a><a href="#builds" data-i18n="navBuilds">Постройки</a><a href="#about" data-i18n="navAbout">Обо мне</a><a href="#contact" data-i18n="navContact">Контакты</a><button class="lang" id="lang">EN</button></nav></div></header>
 <main><section class="hero" id="home"><div class="wrap hero-grid"><div><div class="micro" data-i18n="micro">Minecraft Builder · Portfolio</div><h1>LEV<br><span class="outline">CHINSKY</span></h1><p class="hero-text" data-i18n="heroText">Создаю атмосферные миры в Minecraft. Архитектура, масштаб и детали, которые хочется рассматривать.</p><div class="buttons"><a class="btn primary" href="#builds" data-i18n="ctaBuilds">Смотреть работы</a><a class="btn" href="#contact" data-i18n="ctaContact">Связаться</a></div></div><div class="hero-character" id="heroCharacter">
@@ -46,7 +55,7 @@ footer{padding:25px 0 34px}.footer-in{display:flex;justify-content:space-between
   <div class="character-bottom"><span>LEVCHINSKY</span><span>PRO BUILDER</span></div>
   <div class="character-actions"><button class="character-btn active" id="greetBtn" type="button">Поздороваться ↗</button><button class="character-btn" id="poseBtn" type="button">Мой вайб ✦</button></div>
 </div></div><div class="wrap hero-index">INDEPENDENT BUILDER — EST. IN MINECRAFT</div></section>
-<div class="marquee"><div class="wrap marquee-in"><span>BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span><span>MINECRAFT <em>✳</em> LEVCHINSKY <em>✳</em></span><span>BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span></div></div>
+<div class="marquee" aria-label="BUILD · EXPLORE · CREATE · MINECRAFT · LEVCHINSKY"><div class="marquee-in"><span>BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span><span>MINECRAFT <em>✳</em> LEVCHINSKY <em>✳</em></span><span>BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span><span aria-hidden="true">BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span><span aria-hidden="true">MINECRAFT <em>✳</em> LEVCHINSKY <em>✳</em></span><span aria-hidden="true">BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span></div></div>
 <section class="content-section" id="builds"><div class="wrap"><div class="section-top"><div><div class="eyebrow" data-i18n="workLabel">01 / Selected projects</div><h2 class="section-title" data-i18n="workTitle">THE BUILDS<span style="color:var(--red)">.</span></h2></div><p class="section-description" data-i18n="workText">Избранные проекты — от средневековой архитектуры до целых игровых локаций. Здесь скоро появятся скриншоты твоих реальных работ.</p></div><div class="projects">
 <article class="project"><div class="project-bg"></div><span class="project-num">01 / 04</span><div class="project-info"><div class="project-type" data-i18n="type1">Architecture / Medieval</div><h3 data-i18n="build1">Forgotten Citadel</h3><p data-i18n="desc1">Камень · Башни · История</p></div></article>
 <article class="project"><div class="project-bg"></div><span class="project-num">02 / 04</span><div class="project-info"><div class="project-type" data-i18n="type2">Urban / City</div><h3 data-i18n="build2">North District</h3><p data-i18n="desc2">Городская среда · Улицы</p></div></article>
