@@ -46,6 +46,29 @@ footer{padding:25px 0 34px}.footer-in{display:flex;justify-content:space-between
 @keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.marquee-in{animation:none;transform:none}}
 
+
+/* Homepage project explorer */
+.project-tools{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 22px}
+.project-search{min-width:220px;flex:1;max-width:360px;padding:13px 16px;border:1px solid var(--line);border-radius:12px;background:#100b0e;color:var(--white);outline:none;font:inherit;font-size:12px}
+.project-search:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(242,43,72,.1)}
+.project-filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{padding:11px 13px;border:1px solid var(--line);border-radius:999px;background:transparent;color:#cdbec3;font-size:9px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.2s}
+.filter-btn:hover,.filter-btn[aria-pressed="true"]{border-color:var(--red);background:rgba(242,43,72,.13);color:white}
+.project{cursor:pointer;transition:border-color .25s,transform .25s}
+.project:hover,.project:focus-visible{border-color:rgba(242,43,72,.7);transform:translateY(-3px);outline:none}
+.project-info:after{content:"↗  VIEW PROJECT";display:inline-block;margin-top:15px;color:#ff7186;font-size:9px;letter-spacing:.16em}
+.project[hidden]{display:none!important}
+.project-modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(4,2,4,.82);backdrop-filter:blur(12px)}
+.project-modal.open{display:flex}
+.modal-card{position:relative;width:min(700px,100%);padding:34px;border:1px solid rgba(242,43,72,.38);border-radius:20px;background:linear-gradient(145deg,#1d0d14,#0d080b);box-shadow:0 30px 100px rgba(0,0,0,.55)}
+.modal-kicker{color:#ff7186;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.modal-title{font-size:clamp(34px,7vw,62px);letter-spacing:-.07em;line-height:.95;margin:15px 0}
+.modal-description{max-width:520px;color:#c4b6ba;line-height:1.75;font-size:14px}
+.modal-close{position:absolute;top:14px;right:14px;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:#160c11;color:white;cursor:pointer;font-size:20px}
+.modal-visual{height:180px;margin:24px 0;border-radius:14px;border:1px solid var(--line);background:radial-gradient(ellipse at 60% 30%,rgba(242,43,72,.35),transparent 35%),linear-gradient(135deg,#32121e,#0b080a);position:relative;overflow:hidden}
+.modal-visual:after{content:"";position:absolute;inset:15% 12% 0;background:linear-gradient(180deg,rgba(255,80,110,.18),rgba(4,3,4,.8));clip-path:polygon(0 100%,0 65%,13% 65%,13% 42%,23% 42%,23% 54%,31% 54%,31% 28%,38% 28%,38% 10%,44% 28%,50% 28%,50% 57%,61% 57%,61% 37%,70% 37%,70% 22%,76% 37%,76% 62%,88% 62%,88% 75%,100% 75%,100% 100%)}
+@media(max-width:600px){.project-tools{align-items:stretch}.project-search{max-width:none}.filter-btn{font-size:8px;padding:10px}.modal-card{padding:26px 20px}.modal-visual{height:140px}}
+
 </style></head><body>
 <header><div class="wrap nav"><a class="logo" href="#home">LEVCHINSKY<b>®</b></a><nav class="navlinks"><a href="#home" data-i18n="navHome">Главная</a><a href="#builds" data-i18n="navBuilds">Постройки</a><a href="#about" data-i18n="navAbout">Обо мне</a><a href="#contact" data-i18n="navContact">Контакты</a><button class="lang" id="lang">EN</button></nav></div></header>
 <main><section class="hero" id="home"><div class="wrap hero-grid"><div><div class="micro" data-i18n="micro">Minecraft Builder · Portfolio</div><h1>LEV<br><span class="outline">CHINSKY</span></h1><p class="hero-text" data-i18n="heroText">Создаю атмосферные миры в Minecraft. Архитектура, масштаб и детали, которые хочется рассматривать.</p><div class="buttons"><a class="btn primary" href="#builds" data-i18n="ctaBuilds">Смотреть работы</a><a class="btn" href="#contact" data-i18n="ctaContact">Связаться</a></div></div><div class="hero-character" id="heroCharacter">
@@ -57,19 +80,38 @@ footer{padding:25px 0 34px}.footer-in{display:flex;justify-content:space-between
   <div class="character-actions"><button class="character-btn active" id="greetBtn" type="button">Поздороваться ↗</button><button class="character-btn" id="poseBtn" type="button">Мой вайб ✦</button></div>
 </div></div><div class="wrap hero-index">INDEPENDENT BUILDER — EST. IN MINECRAFT</div></section>
 <div class="marquee" aria-label="BUILD · EXPLORE · CREATE · MINECRAFT · LEVCHINSKY"><div class="marquee-in"><div class="marquee-group"><span>BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span><span>MINECRAFT <em>✳</em> LEVCHINSKY <em>✳</em></span><span>BUILD <em>·</em> EXPLORE <em>·</em> CREATE <em>·</em></span></div><div class="marquee-group" aria-hidden="true"></div></div></div>
-<section class="content-section" id="builds"><div class="wrap"><div class="section-top"><div><div class="eyebrow" data-i18n="workLabel">01 / Selected projects</div><h2 class="section-title" data-i18n="workTitle">THE BUILDS<span style="color:var(--red)">.</span></h2></div><p class="section-description" data-i18n="workText">Избранные проекты — от средневековой архитектуры до целых игровых локаций. Здесь скоро появятся скриншоты твоих реальных работ.</p></div><div class="projects">
-<article class="project"><div class="project-bg"></div><span class="project-num">01 / 04</span><div class="project-info"><div class="project-type" data-i18n="type1">Architecture / Medieval</div><h3 data-i18n="build1">Forgotten Citadel</h3><p data-i18n="desc1">Камень · Башни · История</p></div></article>
-<article class="project"><div class="project-bg"></div><span class="project-num">02 / 04</span><div class="project-info"><div class="project-type" data-i18n="type2">Urban / City</div><h3 data-i18n="build2">North District</h3><p data-i18n="desc2">Городская среда · Улицы</p></div></article>
-<article class="project"><div class="project-bg"></div><span class="project-num">03 / 04</span><div class="project-info"><div class="project-type" data-i18n="type3">Landscape / Fantasy</div><h3 data-i18n="build3">Moonlit Valley</h3><p data-i18n="desc3">Природа · Атмосфера</p></div></article>
-<article class="project"><div class="project-bg"></div><span class="project-num">04 / 04</span><div class="project-info"><div class="project-type" data-i18n="type4">Experimental / WIP</div><h3 data-i18n="build4">Project Unknown</h3><p data-i18n="desc4">В разработке</p></div></article></div><div class="all"><a class="btn" href="builds.html" data-i18n="allBuilds">Открыть все постройки ↗</a></div></div></section>
+<section class="content-section" id="builds"><div class="wrap"><div class="section-top"><div><div class="eyebrow" data-i18n="workLabel">01 / Selected projects</div><h2 class="section-title" data-i18n="workTitle">THE BUILDS<span style="color:var(--red)">.</span></h2></div><p class="section-description" data-i18n="workText">Избранные проекты — от средневековой архитектуры до целых игровых локаций. Здесь скоро появятся скриншоты твоих реальных работ.</p></div><div class="project-tools" aria-label="Project search and filters">
+  <input class="project-search" id="projectSearch" type="search" placeholder="Поиск построек..." data-i18n-placeholder="searchPlaceholder" aria-label="Search builds">
+  <div class="project-filters">
+    <button class="filter-btn" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">Все</button>
+    <button class="filter-btn" type="button" data-filter="architecture" aria-pressed="false" data-i18n="filterArchitecture">Архитектура</button>
+    <button class="filter-btn" type="button" data-filter="city" aria-pressed="false" data-i18n="filterCity">Города</button>
+    <button class="filter-btn" type="button" data-filter="landscape" aria-pressed="false" data-i18n="filterLandscape">Пейзажи</button>
+    <button class="filter-btn" type="button" data-filter="concept" aria-pressed="false" data-i18n="filterConcept">Концепты</button>
+  </div>
+</div><div class="projects">
+<article class="project" tabindex="0" role="button" data-category="architecture" data-project="1" aria-label="Open Forgotten Citadel"><div class="project-bg"></div><span class="project-num">01 / 04</span><div class="project-info"><div class="project-type" data-i18n="type1">Architecture / Medieval</div><h3 data-i18n="build1">Forgotten Citadel</h3><p data-i18n="desc1">Камень · Башни · История</p></div></article>
+<article class="project" tabindex="0" role="button" data-category="city" data-project="2" aria-label="Open North District"><div class="project-bg"></div><span class="project-num">02 / 04</span><div class="project-info"><div class="project-type" data-i18n="type2">Urban / City</div><h3 data-i18n="build2">North District</h3><p data-i18n="desc2">Городская среда · Улицы</p></div></article>
+<article class="project" tabindex="0" role="button" data-category="landscape" data-project="3" aria-label="Open Moonlit Valley"><div class="project-bg"></div><span class="project-num">03 / 04</span><div class="project-info"><div class="project-type" data-i18n="type3">Landscape / Fantasy</div><h3 data-i18n="build3">Moonlit Valley</h3><p data-i18n="desc3">Природа · Атмосфера</p></div></article>
+<article class="project" tabindex="0" role="button" data-category="concept" data-project="4" aria-label="Open Project Unknown"><div class="project-bg"></div><span class="project-num">04 / 04</span><div class="project-info"><div class="project-type" data-i18n="type4">Experimental / WIP</div><h3 data-i18n="build4">Project Unknown</h3><p data-i18n="desc4">В разработке</p></div></article></div><div class="all"><a class="btn" href="builds.html" data-i18n="allBuilds">Открыть все постройки ↗</a></div></div></section>
+<div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close project details">×</button>
+    <div class="modal-kicker" id="modalKicker">PROJECT / 01</div>
+    <h3 class="modal-title" id="modalTitle">Forgotten Citadel</h3>
+    <div class="modal-visual" aria-hidden="true"></div>
+    <p class="modal-description" id="modalDescription">Project details.</p>
+    <button class="btn" id="modalNext" type="button">NEXT PROJECT ↗</button>
+  </div>
+</div>
 <section class="content-section" id="about"><div class="wrap about-grid"><div><div class="eyebrow" data-i18n="aboutLabel">02 / The builder</div><h2 class="section-title" data-i18n="aboutTitle">MADE OF<br>BLOCKS<span style="color:var(--red)">.</span></h2></div><div><p class="about-copy" data-i18n="aboutText">Я <strong>Levchinsky</strong> — Minecraft-билдер. Мне нравится превращать простые блоки в миры с характером: выразительные силуэты, продуманная композиция и мелочи, которые оживляют пространство.</p><div class="stats"><div class="stat"><b>∞</b><span data-i18n="statIdeas">Идей впереди</span></div><div class="stat"><b>3D</b><span data-i18n="statWorlds">Миры и пространства</span></div><div class="stat"><b>MC</b><span data-i18n="statMedium">Мой инструмент</span></div></div></div></div></section>
 <section class="contact" id="contact"><div class="wrap contact-inner"><div><div class="eyebrow" data-i18n="contactLabel">03 / Start a project</div><h2 data-i18n="contactTitle">LET'S MAKE<br>IT REAL<span style="color:var(--red)">.</span></h2></div><div><p data-i18n="contactText">Есть идея для мира, сервера или совместной постройки? Давай обсудим.</p><div class="contact-actions"><a class="btn primary" href="mailto:levchinsky@example.com" data-i18n="contactButton">Написать мне</a><a class="btn" href="#home" data-i18n="topButton">Наверх ↑</a></div></div></div></section></main>
 <footer><div class="wrap footer-in"><span>© 2026 <b>LEVCHINSKY</b></span><span data-i18n="footer">Minecraft Builder Portfolio</span><a href="#home">BACK TO TOP ↑</a></div></footer>
 <script>
 const dict={
-ru:{navHome:"Главная",navBuilds:"Постройки",navAbout:"Обо мне",navContact:"Контакты",micro:"Minecraft-билдер · Портфолио",heroText:"Создаю атмосферные миры в Minecraft. Архитектура, масштаб и детали, которые хочется рассматривать.",ctaBuilds:"Смотреть работы",ctaContact:"Связаться",artLabel:"Миры, созданные блок за блоком",workLabel:"01 / Избранные проекты",workTitle:"ПОСТРОЙКИ",workText:"Избранные проекты — от средневековой архитектуры до целых игровых локаций. Здесь скоро появятся скриншоты твоих реальных работ.",type1:"Архитектура / Средневековье",build1:"Забытая цитадель",desc1:"Камень · Башни · История",type2:"Город / Урбанистика",build2:"Северный район",desc2:"Городская среда · Улицы",type3:"Ландшафт / Фэнтези",build3:"Лунная долина",desc3:"Природа · Атмосфера",type4:"Эксперимент / В разработке",build4:"Неизвестный проект",desc4:"В разработке",allBuilds:"Открыть все постройки ↗",aboutLabel:"02 / О билдере",aboutTitle:"СОЗДАНО ИЗ<br>БЛОКОВ",aboutText:"Я <strong>Levchinsky</strong> — Minecraft-билдер. Мне нравится превращать простые блоки в миры с характером: выразительные силуэты, продуманная композиция и мелочи, которые оживляют пространство.",statIdeas:"Идей впереди",statWorlds:"Миры и пространства",statMedium:"Мой инструмент",contactLabel:"03 / Начнём проект",contactTitle:"ДАВАЙ СОЗДАДИМ<br>ЧТО-ТО КРУТОЕ",contactText:"Есть идея для мира, сервера или совместной постройки? Давай обсудим.",contactButton:"Написать мне",topButton:"Наверх ↑",footer:"Портфолио Minecraft-билдера"},
-en:{navHome:"Home",navBuilds:"Builds",navAbout:"About",navContact:"Contact",micro:"Minecraft Builder · Portfolio",heroText:"I create atmospheric Minecraft worlds with bold architecture, strong scale and details worth exploring.",ctaBuilds:"Explore builds",ctaContact:"Get in touch",artLabel:"Worlds built block by block",workLabel:"01 / Selected projects",workTitle:"THE BUILDS",workText:"Selected projects — from medieval architecture to entire game environments. Real build screenshots will go here.",type1:"Architecture / Medieval",build1:"Forgotten Citadel",desc1:"Stone · Towers · Lore",type2:"Urban / City",build2:"North District",desc2:"Urban spaces · Streets",type3:"Landscape / Fantasy",build3:"Moonlit Valley",desc3:"Nature · Atmosphere",type4:"Experimental / WIP",build4:"Project Unknown",desc4:"Work in progress",allBuilds:"Explore all builds ↗",aboutLabel:"02 / The builder",aboutTitle:"MADE OF<br>BLOCKS",aboutText:"I'm <strong>Levchinsky</strong> — a Minecraft builder. I turn simple blocks into worlds with character: bold silhouettes, thoughtful composition and details that bring spaces to life.",statIdeas:"Ideas ahead",statWorlds:"Worlds & spaces",statMedium:"My medium",contactLabel:"03 / Start a project",contactTitle:"LET'S MAKE<br>IT REAL",contactText:"Have an idea for a world, server or collaboration? Let's talk.",contactButton:"Contact me",topButton:"Back to top ↑",footer:"Minecraft Builder Portfolio"}};
-function setLang(l){document.documentElement.lang=l;document.querySelectorAll("[data-i18n]").forEach(e=>{let k=e.dataset.i18n;if(dict[l][k])e.innerHTML=dict[l][k]});document.getElementById("lang").textContent=l==="ru"?"EN":"RU";const greet=document.getElementById("greetBtn"),pose=document.getElementById("poseBtn");if(greet&&pose){greet.textContent=l==="ru"?"Поздороваться ↗":"Say hi ↗";pose.textContent=l==="ru"?"Мой вайб ✦":"My vibe ✦"}localStorage.setItem("site-lang",l)}
+ru:{searchPlaceholder:"Поиск построек...",filterAll:"Все",filterArchitecture:"Архитектура",filterCity:"Города",filterLandscape:"Пейзажи",filterConcept:"Концепты",navHome:"Главная",navBuilds:"Постройки",navAbout:"Обо мне",navContact:"Контакты",micro:"Minecraft-билдер · Портфолио",heroText:"Создаю атмосферные миры в Minecraft. Архитектура, масштаб и детали, которые хочется рассматривать.",ctaBuilds:"Смотреть работы",ctaContact:"Связаться",artLabel:"Миры, созданные блок за блоком",workLabel:"01 / Избранные проекты",workTitle:"ПОСТРОЙКИ",workText:"Избранные проекты — от средневековой архитектуры до целых игровых локаций. Здесь скоро появятся скриншоты твоих реальных работ.",type1:"Архитектура / Средневековье",build1:"Забытая цитадель",desc1:"Камень · Башни · История",type2:"Город / Урбанистика",build2:"Северный район",desc2:"Городская среда · Улицы",type3:"Ландшафт / Фэнтези",build3:"Лунная долина",desc3:"Природа · Атмосфера",type4:"Эксперимент / В разработке",build4:"Неизвестный проект",desc4:"В разработке",allBuilds:"Открыть все постройки ↗",aboutLabel:"02 / О билдере",aboutTitle:"СОЗДАНО ИЗ<br>БЛОКОВ",aboutText:"Я <strong>Levchinsky</strong> — Minecraft-билдер. Мне нравится превращать простые блоки в миры с характером: выразительные силуэты, продуманная композиция и мелочи, которые оживляют пространство.",statIdeas:"Идей впереди",statWorlds:"Миры и пространства",statMedium:"Мой инструмент",contactLabel:"03 / Начнём проект",contactTitle:"ДАВАЙ СОЗДАДИМ<br>ЧТО-ТО КРУТОЕ",contactText:"Есть идея для мира, сервера или совместной постройки? Давай обсудим.",contactButton:"Написать мне",topButton:"Наверх ↑",footer:"Портфолио Minecraft-билдера"},
+en:{searchPlaceholder:"Search builds...",filterAll:"All",filterArchitecture:"Architecture",filterCity:"Cities",filterLandscape:"Landscapes",filterConcept:"Concepts",navHome:"Home",navBuilds:"Builds",navAbout:"About",navContact:"Contact",micro:"Minecraft Builder · Portfolio",heroText:"I create atmospheric Minecraft worlds with bold architecture, strong scale and details worth exploring.",ctaBuilds:"Explore builds",ctaContact:"Get in touch",artLabel:"Worlds built block by block",workLabel:"01 / Selected projects",workTitle:"THE BUILDS",workText:"Selected projects — from medieval architecture to entire game environments. Real build screenshots will go here.",type1:"Architecture / Medieval",build1:"Forgotten Citadel",desc1:"Stone · Towers · Lore",type2:"Urban / City",build2:"North District",desc2:"Urban spaces · Streets",type3:"Landscape / Fantasy",build3:"Moonlit Valley",desc3:"Nature · Atmosphere",type4:"Experimental / WIP",build4:"Project Unknown",desc4:"Work in progress",allBuilds:"Explore all builds ↗",aboutLabel:"02 / The builder",aboutTitle:"MADE OF<br>BLOCKS",aboutText:"I'm <strong>Levchinsky</strong> — a Minecraft builder. I turn simple blocks into worlds with character: bold silhouettes, thoughtful composition and details that bring spaces to life.",statIdeas:"Ideas ahead",statWorlds:"Worlds & spaces",statMedium:"My medium",contactLabel:"03 / Start a project",contactTitle:"LET'S MAKE<br>IT REAL",contactText:"Have an idea for a world, server or collaboration? Let's talk.",contactButton:"Contact me",topButton:"Back to top ↑",footer:"Minecraft Builder Portfolio"}};
+function setLang(l){document.documentElement.lang=l;document.querySelectorAll("[data-i18n]").forEach(e=>{let k=e.dataset.i18n;if(dict[l][k])e.innerHTML=dict[l][k]});document.getElementById("lang").textContent=l==="ru"?"EN":"RU";const search=document.getElementById("projectSearch");if(search&&dict[l].searchPlaceholder)search.placeholder=dict[l].searchPlaceholder;const greet=document.getElementById("greetBtn"),pose=document.getElementById("poseBtn");if(greet&&pose){greet.textContent=l==="ru"?"Поздороваться ↗":"Say hi ↗";pose.textContent=l==="ru"?"Мой вайб ✦":"My vibe ✦"}localStorage.setItem("site-lang",l)}
 setLang(localStorage.getItem("site-lang")||"ru");document.getElementById("lang").addEventListener("click",()=>setLang(document.documentElement.lang==="ru"?"en":"ru"));
 
 const avatarLines = {
@@ -102,6 +144,62 @@ document.getElementById("poseBtn").addEventListener("click",()=>{const l=documen
  }
  fillTicker();
  window.addEventListener("resize",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(fillTicker)});
+})();
+
+
+/* Search, category filters and keyboard-accessible project preview on the homepage. */
+(()=>{
+ const cards=[...document.querySelectorAll(".project[data-project]")];
+ const search=document.getElementById("projectSearch");
+ const filters=[...document.querySelectorAll(".filter-btn")];
+ const modal=document.getElementById("projectModal");
+ const close=document.getElementById("modalClose");
+ const title=document.getElementById("modalTitle");
+ const kicker=document.getElementById("modalKicker");
+ const desc=document.getElementById("modalDescription");
+ const next=document.getElementById("modalNext");
+ if(!cards.length||!modal)return;
+ let category="all",active=0,previousFocus=null;
+ const projectData={
+  1:{title:{ru:"Забытая цитадель",en:"Forgotten Citadel"},type:{ru:"Архитектура / Средневековье",en:"Architecture / Medieval"},desc:{ru:"Концепт средневековой крепости с массивными башнями, выразительным силуэтом и атмосферой старого мира. Здесь можно будет разместить скриншоты и детали проекта.",en:"A medieval fortress concept with massive towers, a bold silhouette and an old-world atmosphere. Real screenshots and project details can be added here."}},
+  2:{title:{ru:"Северный район",en:"North District"},type:{ru:"Город / Урбанистика",en:"Urban / City"},desc:{ru:"Концепт городского района с улицами и плотной застройкой. Здесь можно будет показать общий план, фасады и детали городской среды.",en:"An urban district concept with streets and dense architecture. Add an overview, facades and city details here."}},
+  3:{title:{ru:"Лунная долина",en:"Moonlit Valley"},type:{ru:"Ландшафт / Фэнтези",en:"Landscape / Fantasy"},desc:{ru:"Фэнтезийный пейзаж, в котором главное — форма рельефа, свет и настроение. Позже сюда можно добавить панорамные скриншоты.",en:"A fantasy landscape focused on terrain, lighting and atmosphere. Panoramic screenshots can be added here later."}},
+  4:{title:{ru:"Неизвестный проект",en:"Project Unknown"},type:{ru:"Эксперимент / В разработке",en:"Experimental / Work in progress"},desc:{ru:"Место для следующей идеи или незаконченной постройки. Замени эту карточку, когда появится новый проект.",en:"A placeholder for your next idea or work in progress. Replace this card when a new build is ready."}}
+ };
+ function lang(){return document.documentElement.lang==="en"?"en":"ru"}
+ function applyFilters(){
+  const q=(search?.value||"").trim().toLocaleLowerCase();
+  cards.forEach(card=>{
+   const data=projectData[card.dataset.project],l=lang();
+   const hay=[card.innerText,data?.title?.[l],data?.type?.[l]].join(" ").toLocaleLowerCase();
+   card.hidden=!(category==="all"||card.dataset.category===category)||!hay.includes(q);
+  });
+ }
+ function openCard(card){
+  active=cards.indexOf(card);previousFocus=document.activeElement;
+  const data=projectData[card.dataset.project],l=lang();
+  if(!data)return;
+  title.textContent=data.title[l];kicker.textContent="PROJECT / "+String(card.dataset.project).padStart(2,"0")+" — "+data.type[l];desc.textContent=data.desc[l];
+  next.textContent=l==="ru"?"СЛЕДУЮЩИЙ ПРОЕКТ ↗":"NEXT PROJECT ↗";
+  modal.classList.add("open");document.body.style.overflow="hidden";close.focus();
+ }
+ function closeModal(){modal.classList.remove("open");document.body.style.overflow="";previousFocus?.focus()}
+ cards.forEach(card=>{
+  card.addEventListener("click",()=>openCard(card));
+  card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openCard(card)}});
+ });
+ search?.addEventListener("input",applyFilters);
+ filters.forEach(btn=>btn.addEventListener("click",()=>{
+  category=btn.dataset.filter;filters.forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));applyFilters();
+ }));
+ close.addEventListener("click",closeModal);
+ modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+ next.addEventListener("click",()=>{let i=active;for(let tries=0;tries<cards.length;tries++){i=(i+1)%cards.length;if(!cards[i].hidden){openCard(cards[i]);return}}});
+ document.addEventListener("keydown",e=>{if(!modal.classList.contains("open"))return;if(e.key==="Escape")closeModal();if(e.key==="ArrowRight")next.click()});
+ const oldSetLang=window.setLang;
+ // Re-filter after the language toggle changes translated card text.
+ document.getElementById("lang")?.addEventListener("click",()=>setTimeout(applyFilters,0));
+ applyFilters();
 })();
 
 </script></body></html>
